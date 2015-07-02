@@ -1,0 +1,1 @@
+"C:\Program Files\uptime software\uptime\scripts\erdcdeleter" --name "Custom WMI Object Monitor"

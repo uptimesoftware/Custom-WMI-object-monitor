@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uptime xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="4.0" target_grouping="other">
+	<class>Custom WMI Object Monitor</class>
+	<exec>com.uptimesoftware.uptime.erdc.MonitorCustomScriptRunner</exec>
+	<erdc_version>1.0</erdc_version>
+	<category>Operating System Monitors</category>
+    <category_related>Operating System Monitors</category_related>
+    <grid_info>
+        <supported_versions>7.3,7.4</supported_versions>
+        <supported_platforms>windows</supported_platforms>
+        <upgrade_in_place>true</upgrade_in_place>
+        <requires_agent_scripts>false</requires_agent_scripts>
+    </grid_info>
+	<elements>
+		<element name="process_windows" parameter_type="input" data_type="string" gui_basic="1" range_type="0">
+			<control_options></control_options>
+			<default_value>plugins/scripts/Custom-WMI-object-monitor/Custom-WMI-object-monitor.bat</default_value>
+			<short_description>Script Name</short_description>
+			<long_description>Name of the script/binary/process to be executed by up.time </long_description>
+			<validation_rule><alphanumeric/></validation_rule>
+			<error_message><alphanumeric>required field</alphanumeric></error_message>
+			<gui_type><hidden/></gui_type>
+		</element>
+		<element name='USERNAME' parameter_type='input' data_type='string' gui_basic='1' range_type='0' units=''>
+			<control_options>size:8</control_options>
+			<default_value></default_value>
+			<validation_rule><alphanumeric/></validation_rule>
+			<error_message><alphanumeric>required field</alphanumeric></error_message>
+			<short_description>Username</short_description>
+			<long_description>A user on the remote machine with access to read WMI, usually a local administrator.</long_description>
+			<gui_type><string/></gui_type>
+		</element>
+		<element name='PASSWORD' parameter_type='input' data_type='string' gui_basic='1' range_type='0' units=''>
+			<control_options>size:8</control_options>
+			<default_value></default_value>
+			<validation_rule><alphanumeric/></validation_rule>
+			<error_message><alphanumeric>required field</alphanumeric></error_message>
+			<short_description>Password</short_description>
+			<long_description>Password for the user we're using to gather the WMI metric.</long_description>
+			<gui_type><password/></gui_type>
+		</element>
+		<element name="authenticate" parameter_type="input" 
+			data_type="boolean" gui_basic="1" range_type="0"> 
+			<gui_type><boolean/></gui_type> 
+			<control_options>size:40 </control_options> 
+			<default_value/> 
+			<short_description>Use credentials to access WMI</short_description> 
+			<long_description>If this is a remote machine, credentials will be required to access WMI.</long_description> 
+			<validation_rule/> 
+			<error_message/> 
+		</element>
+		<element name='WQL' parameter_type='input' data_type='string' gui_basic='1' range_type='0' units=''>
+			<control_options>rows:8; cols:80</control_options>
+			<default_value>select * from Win32_PerfFormattedData_PerfOS_Processor</default_value>
+			<validation_rule />
+			<short_description>WQL Query</short_description>
+			<long_description>WQL Query to run against the server</long_description>
+			<error_message><alphanumeric>required field</alphanumeric></error_message>
+			<gui_type>
+				<textarea/>
+			</gui_type>
+		</element>
+		<element name='WMI_value' parameter_type='output' data_type='ranged' gui_basic='' range_type='0' units=''>
+			<control_options>size:255</control_options>
+			<default_value></default_value>
+			<short_description>Returned value</short_description>
+			<long_description>Returned value</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><integer/></gui_type>
+		</element>
+	</elements>
+	<help>Custom WMI monitor</help>
+</uptime>
